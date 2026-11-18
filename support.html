@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HelloGoodbye — Support</title>
+<meta name="description" content="Help with HelloGoodbye: templates, sending by email, text or WhatsApp, the Outbox, the share extension and more.">
+<link rel="icon" href="icon.png">
+<style>
+  :root { --ink:#14212b; --muted:#5e6670; --canvas:#f6f2f0; --surface:#fdfbfa; --accent:#c4006c; --hello:#e5007f;
+    --shadow: 0 0 0 1px rgba(20,33,43,.05), 0 1px 2px rgba(20,33,43,.04), 0 12px 32px rgba(20,33,43,.06); }
+  * { box-sizing:border-box; }
+  html { -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  body { margin:0; background:var(--canvas); color:var(--ink); font-family: ui-serif, Georgia, "Times New Roman", serif; line-height:1.6; }
+  .wrap { max-width:720px; margin:0 auto; padding:40px 16px 96px; }
+  @media (min-width:640px) { .wrap { padding:48px 24px 96px; } }
+  nav { font-size:14px; }
+  nav a { color:var(--muted); text-decoration:none; display:inline-block; padding:10px 0; }
+  nav a:hover { text-decoration:underline; }
+  a { color:var(--accent); }
+  a:focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
+  .kicker { font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); font-style:italic; margin:24px 0 0; }
+  h1 { font-size:40px; font-weight:300; font-style:italic; margin:8px 0 4px; line-height:1.15; text-wrap:balance; }
+  h2 { font-size:22px; font-weight:400; margin:40px 0 8px; text-wrap:balance; }
+  h3 { font-size:18px; font-weight:400; margin:24px 0 4px; }
+  p, li { font-size:17px; color:#26313a; text-wrap:pretty; }
+  li { margin:4px 0; }
+  .muted { color:var(--muted); font-size:14px; font-style:italic; }
+  .lead { font-size:19px; }
+  hr { border:none; border-top:1px solid rgba(20,33,43,.1); margin:40px 0; }
+  .pill { display:inline-block; background:var(--ink); color:var(--canvas); font-size:11px; letter-spacing:1px; text-transform:uppercase; padding:4px 10px; border-radius:999px; vertical-align:2px; }
+  table { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+  th, td { text-align:left; vertical-align:top; padding:10px 8px; border-bottom:1px solid rgba(20,33,43,.1); }
+  th { font-weight:500; color:var(--muted); font-size:13px; letter-spacing:.5px; text-transform:uppercase; }
+  .table-wrap { overflow-x:auto; }
+  code { font-family: ui-monospace, Menlo, monospace; font-size:14px; background:rgba(20,33,43,.05); padding:1px 5px; border-radius:5px; }
+  .card { background:var(--surface); border-radius:22px; padding:24px; box-shadow:var(--shadow); margin:24px 0; }
+  .card p { margin:6px 0; }
+  footer { margin-top:56px; font-size:13px; color:var(--muted); }
+  footer a { color:var(--muted); }
+  details { border-bottom:1px solid rgba(20,33,43,.1); padding:4px 0; }
+  summary { cursor:pointer; font-size:17px; padding:10px 0 10px 18px; list-style:none; position:relative; }
+  summary::-webkit-details-marker { display:none; }
+  summary::before { content:"+"; position:absolute; left:0; top:10px; color:var(--muted); transition:transform 150ms ease-out; }
+  details[open] > summary::before { transform:rotate(45deg); }
+  details > p, details > ol, details > ul { padding-left:18px; }
+  details p, details ol, details ul { margin-top:0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav><a href="index.html">← HelloGoodbye</a></nav>
+
+  <p class="kicker">HelloGoodbye</p>
+  <h1>Support</h1>
+
+  <div class="card">
+    <p><strong>Write to us:</strong> <a href="mailto:fbmore+hellogoodbye@gmail.com?subject=HelloGoodbye%20support">fbmore+hellogoodbye@gmail.com</a></p>
+    <p class="muted">Please include your device (iPhone, iPad or Mac), its iOS or macOS version, and the HelloGoodbye version from Settings (at the bottom).</p>
+  </div>
+
+  <h2>Getting started</h2>
+  <details><summary>How do I pick a different hello, message or goodbye?</summary>
+    <p>On iPhone and iPad, swipe the row left or right. On the Mac, use the ‹ › arrows next to each row. With VoiceOver, swipe up or down on a row.</p></details>
+  <details><summary>How do I add, duplicate or delete an option?</summary>
+    <p>Tap the ⋯ button next to the row’s name. Tap the text of any option to edit it. A blank option means “leave this part out”.</p></details>
+  <details><summary>How do I send?</summary>
+    <p>Tap the paper plane (on the Mac, press ⌘↩). Type who it’s for: an email address sends by email; a phone number lets you choose Text Message or WhatsApp. Then tap Send — Mail, Messages or WhatsApp opens with the message ready for you to check and send.</p></details>
+
+  <h2>Email</h2>
+  <details><summary>How do I email several people without them seeing each other’s address?</summary>
+    <p>Settings → Sending → “Several email recipients go in” → Bcc. On the Mac, Cc and Bcc messages open in your email app without attachments (macOS can’t pass both); switch to To if you need attachments, or send from your iPhone or iPad.</p></details>
+  <details><summary>Tapping Send opens a share sheet instead of Mail</summary>
+    <p>That happens when the Mail app has no account set up. Add one in Settings → Apps → Mail → Mail Accounts, or pick another email app from the share sheet.</p></details>
+  <details><summary>Can I send plain text instead of formatted email?</summary>
+    <p>Yes: Settings → Sending → turn off “Formatted (HTML) email”.</p></details>
+
+  <h2>Texts and WhatsApp</h2>
+  <details><summary>WhatsApp says the number isn’t valid</summary>
+    <p>WhatsApp needs the full international number, e.g. <code>+44 7700 900123</code>. Type it with the country code, or set a default in Settings → Sending → Default country code.</p></details>
+  <details><summary>Can I send WhatsApp to several people?</summary>
+    <p>WhatsApp links work one person at a time. For groups, send a text message, or share to a WhatsApp group from the share sheet.</p></details>
+  <details><summary>Where did my attachment go in WhatsApp?</summary>
+    <p>WhatsApp links can’t carry files, so messages with files open the share sheet: pick WhatsApp and the chat there. The message text is copied to the clipboard so you can paste it in.</p></details>
+
+  <h2>Offline and the Outbox</h2>
+  <details><summary>What happens if I’m offline?</summary>
+    <p>Every message is saved in the Outbox first. Email goes to Mail, which keeps it in its own Outbox and sends it when you reconnect. For texts and WhatsApp, tap <strong>Queue</strong>: when you’re back online HelloGoodbye shows a notification, and tapping it opens the Outbox so you can send in a tap.</p></details>
+  <details><summary>I don’t get the “back online” notification</summary>
+    <p>Check Settings → Notifications → HelloGoodbye is allowed. If HelloGoodbye isn’t open, iOS decides when to wake it, so the notice can take a little while — opening the app always checks straight away.</p></details>
+  <details><summary>How do I clear the Outbox?</summary>
+    <p>Swipe a message left to delete it, or tap Clear above “Handed off”. Sent messages are removed automatically after 30 days.</p></details>
+
+  <h2>Attachments and sharing</h2>
+  <details><summary>How do canned attachments work?</summary>
+    <p>Settings → Canned attachments → Add File… Switch a file on to include it in every new message; you can still untick it on the “Who & how?” screen.</p></details>
+  <details><summary>HelloGoodbye isn’t in my share sheet</summary>
+    <p>On iPhone or iPad, scroll the app row in the share sheet to the end, tap More, and turn on HelloGoodbye. On the Mac: System Settings → General → Login Items &amp; Extensions → Sharing, and turn on HelloGoodbye.</p></details>
+
+  <h2>Upgrading from version 1</h2>
+  <details><summary>Where are my old templates and mailing lists?</summary>
+    <p>They are imported automatically the first time version 2 opens. Mailing lists now live in Settings → Saved recipients.</p></details>
+
+  <h2>Privacy and your data</h2>
+  <p>Everything stays on your device; we have no servers and collect nothing. To delete your data, remove items in the app or delete HelloGoodbye. Read the full <a href="privacy.html">Privacy Policy</a>.</p>
+
+  <footer>
+    <p>© 2026 FRANCESCO BERTOCCI, LLC · <a href="index.html">Home</a> · <a href="support.html">Support</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>
+  </footer>
+</div>
+</body>
+</html>

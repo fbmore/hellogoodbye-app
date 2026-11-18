@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HelloGoodbye — Write the same email, faster</title>
+<meta name="description" content="HelloGoodbye turns the emails, texts and WhatsApp messages you write again and again into swipeable parts. Pick a hello, a message and a goodbye, add who it's for, and send. iPhone, iPad and Mac.">
+<link rel="icon" href="icon.png">
+<style>
+  :root {
+    --ink:#14212b; --muted:#5e6670; --canvas:#f6f2f0; --surface:#fdfbfa;
+    --accent:#c4006c; --hello:#e5007f; --goodbye:#0069ff;
+    --shadow: 0 0 0 1px rgba(20,33,43,.05), 0 1px 2px rgba(20,33,43,.04), 0 12px 32px rgba(20,33,43,.06);
+  }
+  * { box-sizing:border-box; }
+  html { -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+  body { margin:0; background:var(--canvas); color:var(--ink);
+    font-family: ui-serif, Georgia, "Times New Roman", serif; line-height:1.6; }
+  h1, h2, h3, .title { text-wrap:balance; }
+  p { text-wrap:pretty; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  a:focus-visible, button:focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:6px; }
+  .wrap { max-width:760px; margin:0 auto; padding:48px 16px 80px; }
+  @media (min-width:640px){ .wrap { padding:56px 24px 80px; } }
+
+  nav { display:flex; justify-content:space-between; align-items:center; font-size:14px; gap:12px; white-space:nowrap; }
+  nav .brand { display:flex; align-items:center; gap:10px; font-weight:500; letter-spacing:2px; text-transform:uppercase; font-style:italic; color:var(--ink); }
+  nav .brand img { width:28px; height:28px; border-radius:7px; outline:1px solid oklch(0 0 0 / .1); outline-offset:-1px; }
+  nav .links a { margin-left:16px; color:var(--muted); display:inline-block; padding:10px 0; }
+  @media (max-width:420px){ nav .brand { letter-spacing:1px; font-size:13px; } nav .links a { margin-left:12px; } }
+
+  .hero { text-align:center; padding:48px 0 8px; }
+  .kicker { font-size:13px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); font-style:italic; margin:0; }
+  h1 { font-size:clamp(36px, 8vw, 52px); font-weight:300; font-style:italic; margin:12px 0 14px; line-height:1.08; }
+  h1 .hello { color:var(--hello); } h1 .goodbye { color:var(--goodbye); }
+  .lead { font-size:19px; color:#2b3640; max-width:560px; margin:0 auto; font-style:italic; }
+
+  .cta-row { text-align:center; margin:28px 0 4px; }
+  .cta {
+    display:inline-block; background:var(--ink); color:var(--canvas);
+    font-size:16px; font-weight:500; font-style:italic; font-family:inherit;
+    padding:14px 30px; border-radius:999px; border:0;
+    box-shadow:0 1px 2px rgba(20,33,43,.2), 0 10px 24px rgba(20,33,43,.14);
+    transition-property:transform, box-shadow; transition-duration:150ms; transition-timing-function:ease-out;
+  }
+  a.cta:hover { text-decoration:none; transform:translateY(-1px); box-shadow:0 1px 2px rgba(20,33,43,.2), 0 14px 30px rgba(20,33,43,.18); }
+  a.cta:active { transform:scale(.96); }
+  .cta.soon { cursor:default; }
+  .cta-note { font-size:12px; color:var(--muted); font-style:italic; margin:12px 0 0; }
+
+  /* Onboarding pager */
+  .pager { margin:44px auto 8px; max-width:460px; }
+  .stage { position:relative; background:var(--surface); border-radius:28px; padding:40px 28px 36px; min-height:420px; overflow:hidden; box-shadow:var(--shadow); }
+  .slide { position:absolute; inset:40px 28px 36px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    opacity:0; pointer-events:none; transition:opacity .35s ease-out; }
+  .slide.active { opacity:1; pointer-events:auto; }
+  .art { width:220px; height:170px; display:flex; align-items:center; justify-content:center; margin-bottom:6px; }
+  .art svg { width:100%; height:100%; }
+  .num, .title, .rule, .body { opacity:0; }
+  .active .num   { animation:fadeIn .45s ease-out forwards; }
+  .active .title { animation:fadeIn .45s ease-out .1s forwards; }
+  .active .rule  { animation:fadeIn .45s ease-out .2s forwards; }
+  .active .body  { animation:fadeIn .45s ease-out .3s forwards; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(4px); } to { opacity:1; transform:none; } }
+  .num { font-size:10px; letter-spacing:3px; text-transform:uppercase; font-style:italic; color:var(--muted); }
+  .title { font-size:30px; font-weight:300; font-style:italic; margin:8px 0 0; line-height:1.15; }
+  .rule { width:56px; height:1px; background:rgba(20,33,43,.25); margin:14px auto; }
+  .body { font-size:15px; font-style:italic; color:var(--muted); margin:0; max-width:330px; }
+  .controls { display:flex; justify-content:space-between; align-items:center; margin-top:10px; }
+  .dots { display:flex; gap:2px; }
+  .dot { position:relative; width:22px; height:44px; border:0; background:none; padding:0; cursor:pointer; }
+  .dot::after { content:""; position:absolute; left:50%; top:50%; width:6px; height:6px; margin:-3px 0 0 -3px; border-radius:99px; background:rgba(20,33,43,.2);
+    transition-property:width, margin, background-color; transition-duration:300ms; transition-timing-function:ease-out; }
+  .dot[aria-current="true"]::after { width:20px; margin-left:-10px; background:rgba(20,33,43,.85); }
+  .arrow { background:none; border:none; color:var(--muted); font-size:24px; cursor:pointer; width:44px; height:44px; font-family:inherit; border-radius:99px; }
+  .arrow:hover { color:var(--ink); }
+
+  /* Screens */
+  .peek { margin:64px 0 8px; text-align:center; }
+  .peek h2, .section-title { font-size:26px; font-weight:300; font-style:italic; margin:0 0 20px; }
+  .peek-row { display:flex; gap:16px; overflow-x:auto; padding:4px 4px 16px; scroll-snap-type:x mandatory; scrollbar-width:none; }
+  .peek-row::-webkit-scrollbar { display:none; }
+  .peek figure { flex:0 0 auto; width:210px; margin:0; scroll-snap-align:center; }
+  .peek img { display:block; width:100%; height:auto; border-radius:28px; outline:1px solid oklch(0 0 0 / .1); outline-offset:-1px;
+    box-shadow:0 1px 2px rgba(20,33,43,.06), 0 16px 34px rgba(20,33,43,.1); background:var(--surface); }
+  .peek figcaption { font-size:13px; font-style:italic; color:var(--muted); margin-top:10px; }
+  @media (min-width:900px){ .peek-row { justify-content:center; overflow:visible; } }
+
+  .features { display:grid; grid-template-columns:1fr; gap:16px; margin:56px 0; }
+  @media (min-width:620px){ .features { grid-template-columns:1fr 1fr; } }
+  .card { background:var(--surface); border-radius:22px; padding:24px; box-shadow:var(--shadow); }
+  .card h3 { margin:0 0 6px; font-size:18px; font-weight:400; }
+  .card p { margin:0; font-size:15px; color:var(--muted); }
+  .card .tag { display:inline-block; width:8px; height:8px; border-radius:99px; margin-right:8px; vertical-align:2px; }
+
+  .price { text-align:center; margin:48px 0; }
+  .price .amt { font-size:22px; font-style:italic; margin:0; }
+  .price .tag { font-size:15px; color:var(--muted); font-style:italic; margin:6px 0 0; }
+  hr { border:none; border-top:1px solid rgba(20,33,43,.1); margin:48px 0; }
+  footer { text-align:center; font-size:13px; color:var(--muted); }
+  footer a { color:var(--muted); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slide, .dot::after, .cta { transition:none; }
+    .active .num, .active .title, .active .rule, .active .body { animation:none; opacity:1; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <span class="brand"><img src="icon.png" alt="">HelloGoodbye</span>
+    <span class="links">
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </span>
+  </nav>
+
+  <header class="hero">
+    <p class="kicker">The messages you write again and again, in seconds</p>
+    <h1><span class="hello">Hello,</span> the same email — <span class="goodbye">faster.</span></h1>
+    <p class="lead">Keep a few versions of every part of a message. Swipe to pick a hello, a message, a goodbye and a signature, type who it’s for, and send it by email, text or WhatsApp.</p>
+  </header>
+
+  <div class="cta-row">
+    <!-- Swap for the App Store link once 2.0 is live: https://apps.apple.com/app/id733645375 -->
+    <span class="cta soon">Version 2 is coming soon to the App Store</span>
+    <p class="cta-note">Free · iPhone, iPad and Mac</p>
+  </div>
+
+  <section class="pager" aria-label="How HelloGoodbye works" aria-roledescription="carousel">
+    <div class="stage" id="stage">
+
+      <article class="slide active" aria-roledescription="slide" aria-label="1 of 4">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 220 170" fill="none">
+            <rect x="20" y="14" width="180" height="34" rx="10" fill="#e5007f" fill-opacity=".1"/>
+            <text x="34" y="37" font-family="ui-serif, Georgia, serif" font-style="italic" font-size="17" fill="#e5007f">Hello!</text>
+            <rect x="20" y="58" width="180" height="56" rx="10" fill="#113d53" fill-opacity=".08"/>
+            <rect x="34" y="72" width="120" height="6" rx="3" fill="#113d53" fill-opacity=".45"/>
+            <rect x="34" y="86" width="140" height="6" rx="3" fill="#113d53" fill-opacity=".3"/>
+            <rect x="34" y="100" width="90" height="6" rx="3" fill="#113d53" fill-opacity=".3"/>
+            <rect x="20" y="124" width="180" height="34" rx="10" fill="#0069ff" fill-opacity=".1"/>
+            <text x="34" y="147" font-family="ui-serif, Georgia, serif" font-style="italic" font-size="17" fill="#0069ff">Goodbye,</text>
+            <path d="M178 31h12m0 0-4-4m4 4-4 4M178 141h12m0 0-4-4m4 4-4 4" stroke="#14212b" stroke-opacity=".45" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="num">One</div>
+        <h3 class="title">Swipe the parts</h3>
+        <div class="rule"></div>
+        <p class="body">Subject, hello, message, goodbye, signature — keep as many versions of each as you like and swipe to the one that fits.</p>
+      </article>
+
+      <article class="slide" aria-roledescription="slide" aria-label="2 of 4">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 220 170" fill="none">
+            <rect x="20" y="22" width="180" height="40" rx="12" fill="#fff" stroke="#14212b" stroke-opacity=".12"/>
+            <text x="34" y="47" font-family="ui-serif, Georgia, serif" font-style="italic" font-size="14" fill="#14212b" fill-opacity=".75">+44 7700 900123</text>
+            <rect x="20" y="78" width="86" height="36" rx="18" fill="#e5007f"/>
+            <text x="63" y="101" text-anchor="middle" font-family="ui-serif, Georgia, serif" font-style="italic" font-size="13" fill="#fff">Text</text>
+            <rect x="114" y="78" width="86" height="36" rx="18" fill="#fff" stroke="#14212b" stroke-opacity=".15"/>
+            <text x="157" y="101" text-anchor="middle" font-family="ui-serif, Georgia, serif" font-style="italic" font-size="13" fill="#14212b">WhatsApp</text>
+            <rect x="20" y="128" width="180" height="26" rx="8" fill="#0069ff" fill-opacity=".1"/>
+            <text x="34" y="145" font-family="ui-serif, Georgia, serif" font-style="italic" font-size="12" fill="#0069ff">anna@example.com → Email</text>
+          </svg>
+        </div>
+        <div class="num">Two</div>
+        <h3 class="title">Who, and how?</h3>
+        <div class="rule"></div>
+        <p class="body">Type an email address and it goes by email. Type a phone number and choose a text message or WhatsApp. Several people at once works too.</p>
+      </article>
+
+      <article class="slide" aria-roledescription="slide" aria-label="3 of 4">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 220 170" fill="none">
+            <path d="M50 70h120l14 40v34a10 10 0 0 1-10 10H46a10 10 0 0 1-10-10v-34z" fill="#fff" stroke="#14212b" stroke-opacity=".2" stroke-width="1.5"/>
+            <path d="M36 110h44l8 14h44l8-14h44" stroke="#14212b" stroke-opacity=".2" stroke-width="1.5"/>
+            <rect x="74" y="36" width="72" height="44" rx="6" fill="#e5007f" fill-opacity=".14"/>
+            <rect x="84" y="48" width="44" height="5" rx="2.5" fill="#e5007f" fill-opacity=".6"/>
+            <rect x="84" y="60" width="30" height="5" rx="2.5" fill="#e5007f" fill-opacity=".4"/>
+            <path d="M150 22c10-8 24-8 34 0M156 30c6-5 16-5 22 0" stroke="#0069ff" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="167" cy="37" r="2.5" fill="#0069ff"/>
+          </svg>
+        </div>
+        <div class="num">Three</div>
+        <h3 class="title">Offline? It waits.</h3>
+        <div class="rule"></div>
+        <p class="body">Every message is kept in the Outbox first. Queue texts while you’re offline and HelloGoodbye nudges you the moment you’re back.</p>
+      </article>
+
+      <article class="slide" aria-roledescription="slide" aria-label="4 of 4">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 220 170" fill="none">
+            <rect x="30" y="20" width="160" height="130" rx="18" fill="#fff" stroke="#14212b" stroke-opacity=".12"/>
+            <rect x="46" y="36" width="56" height="56" rx="12" fill="#14212b" fill-opacity=".06"/>
+            <path d="M54 82l14-16 10 10 8-8 10 14z" fill="#0069ff" fill-opacity=".45"/>
+            <circle cx="88" cy="50" r="5" fill="#e5007f" fill-opacity=".6"/>
+            <rect x="114" y="40" width="58" height="6" rx="3" fill="#14212b" fill-opacity=".25"/>
+            <rect x="114" y="54" width="44" height="6" rx="3" fill="#14212b" fill-opacity=".15"/>
+            <rect x="46" y="106" width="128" height="30" rx="15" fill="#e5007f"/>
+            <text x="110" y="126" text-anchor="middle" font-family="ui-serif, Georgia, serif" font-style="italic" font-size="13" fill="#fff">Share ▸ HelloGoodbye</text>
+          </svg>
+        </div>
+        <div class="num">Four</div>
+        <h3 class="title">From any app</h3>
+        <div class="rule"></div>
+        <p class="body">Share a photo, PDF or link from any app to HelloGoodbye. It’s attached for you, ready for the same quick “who and how”.</p>
+      </article>
+
+    </div>
+    <div class="controls">
+      <button class="arrow" id="prev" aria-label="Previous slide">‹</button>
+      <div class="dots" id="dots"></div>
+      <button class="arrow" id="next" aria-label="Next slide">›</button>
+    </div>
+  </section>
+
+  <section class="peek" aria-label="Screens">
+    <h2>A closer look</h2>
+    <div class="peek-row">
+      <figure><img src="shots/m1-compose.jpg" alt="Compose screen with swipeable Subject, Hello, Message and Goodbye rows" width="507" height="1100" loading="lazy"><figcaption>Swipe each part</figcaption></figure>
+      <figure><img src="shots/m5-who-and-how-email.jpg" alt="Who and how sheet with two email addresses and the message preview" width="507" height="1100" loading="lazy"><figcaption>Email to a group</figcaption></figure>
+      <figure><img src="shots/m2-who-and-how-offline.jpg" alt="Who and how sheet with a phone number, WhatsApp selected and a Queue button" width="507" height="1100" loading="lazy"><figcaption>Text or WhatsApp</figcaption></figure>
+      <figure><img src="shots/m4-back-online.jpg" alt="Outbox with a back-online notification: 1 message is ready to send" width="507" height="1100" loading="lazy"><figcaption>Back online, ready to send</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="card"><h3><span class="tag" style="background:var(--hello)"></span>Templates that bend</h3><p>Unlimited versions of every part. Leave a part blank to skip it. Your choices are remembered for next time.</p></div>
+    <div class="card"><h3><span class="tag" style="background:var(--goodbye)"></span>Email, text or WhatsApp</h3><p>Hands the finished message to Mail, Messages or WhatsApp — you always see it and tap Send yourself.</p></div>
+    <div class="card"><h3><span class="tag" style="background:var(--ink)"></span>Files you always send</h3><p>Keep a CV, a menu or a map as a canned attachment and include it with a tap. Saved recipient lists, too.</p></div>
+    <div class="card"><h3><span class="tag" style="background:var(--muted)"></span>Private by design</h3><p>No account, no analytics, no ads, no servers. Your templates and Outbox stay on your device.</p></div>
+  </section>
+
+  <div class="price">
+    <p class="amt">Free. No ads, no subscriptions, no catch.</p>
+    <p class="tag">One download for iPhone, iPad and Mac.</p>
+  </div>
+
+  <hr>
+  <footer>
+    <p>© 2026 FRANCESCO BERTOCCI, LLC · <a href="support.html">Support</a> · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms</a> · <a href="mailto:fbmore+hellogoodbye@gmail.com">Contact</a></p>
+  </footer>
+</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const dotsWrap = document.getElementById('dots');
+  let i = 0;
+  slides.forEach((_, n) => {
+    const d = document.createElement('button');
+    d.className = 'dot';
+    d.setAttribute('aria-label', 'Slide ' + (n + 1));
+    if (n === 0) d.setAttribute('aria-current', 'true');
+    d.addEventListener('click', () => go(n));
+    dotsWrap.appendChild(d);
+  });
+  const dots = Array.from(dotsWrap.children);
+  function go(n) {
+    n = (n + slides.length) % slides.length;
+    if (n === i) return;
+    slides[i].classList.remove('active');
+    i = n;
+    void slides[i].offsetWidth;
+    slides[i].classList.add('active');
+    dots.forEach((d, k) => k === i ? d.setAttribute('aria-current', 'true') : d.removeAttribute('aria-current'));
+  }
+  document.getElementById('prev').addEventListener('click', () => go(i - 1));
+  document.getElementById('next').addEventListener('click', () => go(i + 1));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') go(i - 1);
+    if (e.key === 'ArrowRight') go(i + 1);
+  });
+  let x0 = null;
+  const stage = document.getElementById('stage');
+  stage.addEventListener('touchstart', e => x0 = e.touches[0].clientX, {passive:true});
+  stage.addEventListener('touchend', e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1));
+    x0 = null;
+  }, {passive:true});
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let timer = reduce ? null : setInterval(() => go(i + 1), 5000);
+  ['click','touchstart','keydown'].forEach(ev => document.addEventListener(ev, () => {
+    if (reduce) return;
+    clearInterval(timer); timer = setInterval(() => go(i + 1), 9000);
+  }, {passive:true}));
+</script>
+</body>
+</html>
