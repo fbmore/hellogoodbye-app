@@ -94,9 +94,23 @@
   .card p { margin:0; font-size:15px; color:var(--muted); }
   .card .tag { display:inline-block; width:8px; height:8px; border-radius:99px; margin-right:8px; vertical-align:2px; }
 
-  .price { text-align:center; margin:48px 0; }
-  .price .amt { font-size:22px; font-style:italic; margin:0; }
-  .price .tag { font-size:15px; color:var(--muted); font-style:italic; margin:6px 0 0; }
+  .price { text-align:center; margin:56px 0 48px; }
+  .price > .tag { font-size:15px; color:var(--muted); font-style:italic; margin:20px 0 0; }
+  .plans { display:grid; grid-template-columns:1fr; gap:16px; text-align:left; }
+  @media (min-width:620px){ .plans { grid-template-columns:1fr 1fr; } }
+  .plan { background:var(--surface); border-radius:22px; padding:24px; box-shadow:var(--shadow); display:flex; flex-direction:column; }
+  .plan h3 { margin:0 0 6px; font-size:18px; font-weight:400; text-wrap:balance; }
+  .plan-lede { margin:0 0 14px; font-size:15px; font-style:italic; color:var(--muted); }
+  .plan ul { margin:0; padding:0; list-style:none; font-size:15px; }
+  .plan li { padding:6px 0 6px 18px; position:relative; text-wrap:pretty; }
+  .plan li::before { content:""; position:absolute; left:2px; top:15px; width:6px; height:6px; border-radius:99px; background:var(--hello); }
+  .rates { margin:0; }
+  .rates div { display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:8px 0; border-bottom:1px solid rgba(20,33,43,.08); }
+  .rates div:last-child { border-bottom:0; }
+  .rates dt { font-size:15px; color:var(--ink); }
+  .rates dd { margin:0; font-size:20px; font-style:italic; font-variant-numeric:tabular-nums; }
+  .rates dd span { font-size:13px; color:var(--muted); }
+  .fine { margin:12px 0 0; font-size:12px; font-style:italic; color:var(--muted); }
   hr { border:none; border-top:1px solid rgba(20,33,43,.1); margin:48px 0; }
   footer { text-align:center; font-size:13px; color:var(--muted); }
   footer a { color:var(--muted); }
@@ -127,7 +141,7 @@
   <div class="cta-row">
     <!-- Swap for the App Store link once 2.0 is live: https://apps.apple.com/app/id733645375 -->
     <span class="cta soon">Version 2 is coming soon to the App Store</span>
-    <p class="cta-note">Free · iPhone, iPad and Mac</p>
+    <p class="cta-note">Free to download · iPhone, iPad and Mac</p>
   </div>
 
   <section class="pager" aria-label="How HelloGoodbye works" aria-roledescription="carousel">
@@ -150,7 +164,7 @@
         <div class="num">One</div>
         <h3 class="title">Swipe the parts</h3>
         <div class="rule"></div>
-        <p class="body">Subject, hello, message, goodbye, signature — keep as many versions of each as you like and swipe to the one that fits.</p>
+        <p class="body">Subject, hello, message, goodbye, signature — keep a few versions of each and swipe to the one that fits.</p>
       </article>
 
       <article class="slide" aria-roledescription="slide" aria-label="2 of 4">
@@ -228,16 +242,42 @@
   </section>
 
   <section class="features">
-    <div class="card"><h3><span class="tag" style="background:var(--hello)"></span>Templates that bend</h3><p>Unlimited versions of every part. Leave a part blank to skip it. Your choices are remembered for next time.</p></div>
+    <div class="card"><h3><span class="tag" style="background:var(--hello)"></span>Templates that bend</h3><p>Up to five versions of every part, or as many as you like with Plus. Leave a part blank to skip it. Your choices are remembered for next time.</p></div>
     <div class="card"><h3><span class="tag" style="background:var(--goodbye)"></span>Email, text or WhatsApp</h3><p>Hands the finished message to Mail, Messages or WhatsApp — you always see it and tap Send yourself.</p></div>
     <div class="card"><h3><span class="tag" style="background:var(--ink)"></span>Files you always send</h3><p>Keep a CV, a menu or a map as a canned attachment and include it with a tap. Saved recipient lists, too.</p></div>
-    <div class="card"><h3><span class="tag" style="background:var(--muted)"></span>Private by design</h3><p>No account, no analytics, no ads, no servers. Your templates and Outbox stay on your device.</p></div>
+    <div class="card"><h3><span class="tag" style="background:var(--hello)"></span>History and people</h3><p>Everything you send is kept in History, searchable, until you delete it. People builds your address book from who you write to, or import from Contacts.</p></div>
+    <div class="card"><h3><span class="tag" style="background:var(--goodbye)"></span>Follow up, on every device</h3><p>People and History sync through your private iCloud, so they match on iPhone, iPad and Mac. With Plus, flag a sent message to follow up.</p></div>
+    <div class="card"><h3><span class="tag" style="background:var(--muted)"></span>Private by design</h3><p>No account, no ads, no analytics, no tracking. Your messages, people and history stay on your devices and in your own private iCloud.</p></div>
   </section>
 
-  <div class="price">
-    <p class="amt">Free. No ads, no subscriptions, no catch.</p>
-    <p class="tag">One download for iPhone, iPad and Mac.</p>
-  </div>
+  <section class="price" aria-labelledby="price-title">
+    <h2 class="section-title" id="price-title">Free to use. Plus if you want more.</h2>
+    <div class="plans">
+      <div class="plan">
+        <h3>Free</h3>
+        <p class="plan-lede">Everything you need to write and send, for as long as you like.</p>
+        <ul>
+          <li>Up to 5 versions of each part</li>
+          <li>Email, text and WhatsApp</li>
+          <li>Share from any app, Outbox and offline queue</li>
+          <li>People, saved lists and one canned attachment</li>
+          <li>History of the last 30 days</li>
+          <li>iCloud sync on iPhone, iPad and Mac</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <h3>HelloGoodbye Plus</h3>
+        <p class="plan-lede">Unlimited versions and canned attachments, your full History, follow-up flags, and spreadsheet import and export of People.</p>
+        <dl class="rates">
+          <div><dt>Monthly</dt><dd>$1.99<span>/month</span></dd></div>
+          <div><dt>Yearly</dt><dd>$14.99<span>/year</span></dd></div>
+          <div><dt>Lifetime</dt><dd>$34.99<span> once</span></dd></div>
+        </dl>
+        <p class="fine">Yearly starts with a 1-week free trial for eligible new subscribers. Subscriptions renew automatically until cancelled. US prices; the app shows yours in your currency.</p>
+      </div>
+    </div>
+    <p class="tag">No ads. One download for iPhone, iPad and Mac.</p>
+  </section>
 
   <hr>
   <footer>

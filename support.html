@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HelloGoodbye — Support</title>
-<meta name="description" content="Help with HelloGoodbye: templates, sending by email, text or WhatsApp, the Outbox, the share extension and more.">
+<meta name="description" content="Help with HelloGoodbye: templates, sending by email, text or WhatsApp, the Outbox, History and People, iCloud sync, HelloGoodbye Plus and more.">
 <link rel="icon" href="icon.png">
 <style>
   :root { --ink:#14212b; --muted:#5e6670; --canvas:#f6f2f0; --surface:#fdfbfa; --accent:#c4006c; --hello:#e5007f;
@@ -88,8 +88,12 @@
     <p>Every message is saved in the Outbox first. Email goes to Mail, which keeps it in its own Outbox and sends it when you reconnect. For texts and WhatsApp, tap <strong>Queue</strong>: when you’re back online HelloGoodbye shows a notification, and tapping it opens the Outbox so you can send in a tap.</p></details>
   <details><summary>I don’t get the “back online” notification</summary>
     <p>Check Settings → Notifications → HelloGoodbye is allowed. If HelloGoodbye isn’t open, iOS decides when to wake it, so the notice can take a little while — opening the app always checks straight away.</p></details>
-  <details><summary>How do I clear the Outbox?</summary>
-    <p>Swipe a message left to delete it, or tap Clear above “Handed off”. Sent messages are removed automatically after 30 days.</p></details>
+  <details><summary>Where do sent messages go? Are they removed after 30 days?</summary>
+    <p>Once a message is handed to Mail, Messages or WhatsApp it leaves the Outbox and appears in the <strong>History</strong> tab, where it’s kept until you delete it — nothing is removed automatically. The free version shows the last 30 days (search included); with HelloGoodbye Plus you see your full History. Older messages are never deleted on the free version, so they reappear if you get Plus. To remove a waiting message from the Outbox, swipe it left.</p></details>
+
+  <h2>Saved recipients</h2>
+  <details><summary>How do I make or edit a recipient list?</summary>
+    <p>Settings → Saved recipients, then tap a list. Add people by typing an email address or phone number (it’s checked as you add it, with suggestions from your HelloGoodbye People), pick several at once with <strong>From HelloGoodbye People</strong>, or on iPhone and iPad use <strong>From Contacts</strong> to choose individual email addresses or numbers. From Contacts uses Apple’s picker, so HelloGoodbye doesn’t ask for access to your contacts; the people you pick are also added to People.</p></details>
 
   <h2>Attachments and sharing</h2>
   <details><summary>How do canned attachments work?</summary>
@@ -97,12 +101,43 @@
   <details><summary>HelloGoodbye isn’t in my share sheet</summary>
     <p>On iPhone or iPad, scroll the app row in the share sheet to the end, tap More, and turn on HelloGoodbye. On the Mac: System Settings → General → Login Items &amp; Extensions → Sharing, and turn on HelloGoodbye.</p></details>
 
+  <h2>History and People</h2>
+  <details><summary>What is People?</summary>
+    <p>Your HelloGoodbye address book. It fills itself with the people you send to, and you can add or edit people (name, email addresses, phone numbers and a note). It also shows when you last contacted each person.</p></details>
+  <details><summary>How do I import people from Contacts?</summary>
+    <p>On iPhone or iPad, go to History → People and tap Import from Contacts. iOS shows its own contact picker: HelloGoodbye doesn’t ask for access to your contacts, and only the people you pick are imported.</p></details>
+  <details><summary>How do I delete a person or my history?</summary>
+    <p>In History, swipe a message to delete it. In People, swipe a person to delete them; deleting a person keeps the messages you sent them, so delete those in History too if you want them gone. Deleting the app removes everything on that device; to remove the iCloud copy too, see “How does iCloud sync work?” below to remove the iCloud copy.</p></details>
+  <details><summary>Can I import or export my address book?</summary>
+    <p>Yes, with HelloGoodbye Plus. In History → People, tap <strong>+</strong> and choose <strong>Export Spreadsheet…</strong> to save a CSV file (“HelloGoodbye People.csv”, with Name, Emails, Phones, Note and Last contacted; several addresses in one cell are separated by “; ”). You choose where to save it, and it opens in Numbers, Excel or Google Sheets.</p>
+    <p>To bring people in, tap <strong>+</strong> → <strong>Import Spreadsheet…</strong> and pick a CSV or tab-separated file with a header row (semicolon-separated CSV from Excel works too). Columns are recognised by name: Name, First name or Last name; any Email column; Phone, Mobile or Tel columns; and Note. Someone who shares an email or number with a person already in your address book is merged with them, and rows without an email or phone number are skipped. The file is read on your device; nothing is uploaded.</p></details>
+  <details><summary>How do follow-ups work?</summary>
+    <p>With HelloGoodbye Plus you can flag a sent message in History for follow-up, so you remember to get back to someone.</p></details>
+
+  <h2>HelloGoodbye Plus</h2>
+  <details><summary>What’s free, and what’s in Plus?</summary>
+    <p><strong>Free, forever:</strong> templates with up to 5 versions of each part, sending by email, text message and WhatsApp, sharing files from any app, the Outbox and offline queue with the back-online notification, the Mac app, saved recipient lists, People (your address book, including import from Contacts on iPhone and iPad), iCloud sync of People and History, one canned attachment, and the History of the last 30 days with search.</p>
+    <p><strong>Plus:</strong> unlimited versions of each part, unlimited canned attachments, your full History beyond 30 days, follow-up flags on sent messages, and spreadsheet import and export of People. In the US Plus is $1.99 a month, $14.99 a year (with a 1-week free trial for eligible new subscribers) or $34.99 once for Lifetime; prices vary by country and the app shows yours in your currency. Open it from Settings → HelloGoodbye Plus.</p></details>
+  <details><summary>How do I restore my purchase?</summary>
+    <p>Settings → HelloGoodbye Plus → Restore Purchases, signed in to the same Apple Account you bought with. The Mac app is the same purchase, so Restore works there too.</p></details>
+  <details><summary>How do I cancel or get a refund?</summary>
+    <p>Cancel a Monthly or Yearly subscription in Settings → Apple Account → Subscriptions (or tap Manage Subscription in HelloGoodbye’s Settings) at least 24 hours before the end of the current period; Plus stays active until then. Refunds are handled by Apple: request one at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>. Lifetime is a one-time purchase and never renews. More in the <a href="terms.html">Terms of Use</a>.</p></details>
+  <details><summary>How does iCloud sync work? Why isn’t it syncing?</summary>
+    <p>Sync is free and on by default: when you’re signed in to iCloud, People and History sync through your private iCloud, so they match on your iPhone, iPad and Mac. Templates, canned attachments and the Outbox aren’t synced. If something doesn’t show up:</p>
+    <ul>
+      <li>make sure each device is signed in to iCloud with the <strong>same Apple Account</strong>;</li>
+      <li>check that “Sync with iCloud” is on in HelloGoodbye → Settings → iCloud on each device;</li>
+      <li>check that iCloud is on for HelloGoodbye in the system Settings → [your name] → iCloud;</li>
+      <li>open HelloGoodbye on both devices, and pull down to refresh in History.</li>
+    </ul>
+    <p>To stop syncing on a device, turn off “Sync with iCloud” in HelloGoodbye → Settings → iCloud. To remove the synced copy, go to Settings → [your name] → iCloud → Manage Account Storage.</p></details>
+
   <h2>Upgrading from version 1</h2>
   <details><summary>Where are my old templates and mailing lists?</summary>
     <p>They are imported automatically the first time version 2 opens. Mailing lists now live in Settings → Saved recipients.</p></details>
 
   <h2>Privacy and your data</h2>
-  <p>Everything stays on your device; we have no servers and collect nothing. To delete your data, remove items in the app or delete HelloGoodbye. Read the full <a href="privacy.html">Privacy Policy</a>.</p>
+  <p>Your data stays on your devices and in your own private iCloud, which we can’t read. We have no servers of our own, no account, no ads and no analytics; purchases go through Apple and RevenueCat, which sees only an anonymous ID and your purchase records. To delete your data, remove items in the app or delete HelloGoodbye. Read the full <a href="privacy.html">Privacy Policy</a>.</p>
 
   <footer>
     <p>© 2026 FRANCESCO BERTOCCI, LLC · <a href="index.html">Home</a> · <a href="support.html">Support</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p>

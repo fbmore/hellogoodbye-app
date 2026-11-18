@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HelloGoodbye — Privacy Policy</title>
-<meta name="description" content="How HelloGoodbye handles your data: everything stays on your device. No account, no tracking, no analytics.">
+<meta name="description" content="How HelloGoodbye handles your data: it stays on your devices and in your own private iCloud. No account, no tracking, no analytics, no ads.">
 <link rel="icon" href="icon.png">
 <style>
   :root { --ink:#14212b; --muted:#5e6670; --canvas:#f6f2f0; --surface:#fdfbfa; --accent:#c4006c; --hello:#e5007f;
@@ -53,11 +53,11 @@
 
   <p class="kicker">HelloGoodbye</p>
   <h1>Privacy Policy</h1>
-  <p class="muted">Last updated: 17 November 2026 · applies to HelloGoodbye 2.0 and later for iPhone, iPad and Mac</p>
+  <p class="muted">Last updated: 18 November 2026 · applies to HelloGoodbye 2.0 and later for iPhone, iPad and Mac</p>
 
-  <p class="lead">HelloGoodbye helps you write messages faster. Your templates, recipients and Outbox stay on your device, and messages leave it only when you send them through Mail, Messages, WhatsApp or another app you choose.</p>
+  <p class="lead">HelloGoodbye helps you write messages faster. Your templates, address book, history and Outbox stay on your device (and, if you are signed in to iCloud, your address book and history also sync through your own private iCloud). Messages leave your device only when you send them through Mail, Messages, WhatsApp or another app you choose.</p>
 
-  <p><span class="pill">In short</span> &nbsp;No account. No tracking. No analytics. No ads. We have no servers, so we never receive your messages, your contacts or anything else you put in the app.</p>
+  <p><span class="pill">In short</span> &nbsp;No account. No tracking. No analytics. No ads. We run no servers of our own and never receive your messages, your contacts, your address book or anything else you write in the app. The one outside service is RevenueCat, which handles in-app purchases and sees only an anonymous ID and your App Store purchase records — never your name, email, contacts or messages.</p>
 
   <hr>
 
@@ -65,13 +65,15 @@
   <p>HelloGoodbye is made by FRANCESCO BERTOCCI, LLC (“we”). Questions about this policy: <a href="mailto:fbmore+hellogoodbye@gmail.com">fbmore+hellogoodbye@gmail.com</a>.</p>
 
   <h2>What the app stores, and where</h2>
-  <p>Everything below is stored only on your device, in a private folder shared by the HelloGoodbye app and its share extension (the App Group <code>group.com.fbmore.HelloGoodbye</code>). It is included in your device backups like any other app data. HelloGoodbye does not sync it through iCloud or any other service, and we cannot access it.</p>
+  <p>Everything below is stored on your device, in a private folder shared by the HelloGoodbye app and its share extension (the App Group <code>group.com.fbmore.HelloGoodbye</code>). It is included in your device backups like any other app data, and we cannot access it. If you are signed in to iCloud, your address book and history are also synced through your private iCloud (see <a href="#icloud">iCloud sync</a>); nothing else is synced.</p>
   <div class="table-wrap"><table>
     <tr><th>What</th><th>Why</th><th>How long</th></tr>
     <tr><td>Your templates: the subject, hello, message, goodbye and signature options you write, and which one is selected</td><td>To compose your messages</td><td>Until you change them or delete the app</td></tr>
-    <tr><td>Saved recipient lists: names, email addresses and phone numbers you type or pick</td><td>So you can write to a group in one tap</td><td>Until you remove them</td></tr>
+    <tr><td>Saved recipient lists: names, email addresses and phone numbers you type, choose from your HelloGoodbye People, or pick from Contacts</td><td>So you can write to a group in one tap</td><td>Until you remove them</td></tr>
     <tr><td>Canned attachments: copies of files you add in Settings</td><td>To attach them to new messages</td><td>Until you remove them</td></tr>
-    <tr><td>Outbox: each message you send or queue, with its recipients, text, attachments, channel and status</td><td>So nothing is lost if you are offline or the app closes</td><td>Waiting messages until you send or delete them; attachment copies are deleted once a message is handed off; sent history for 30 days, or until you tap Clear</td></tr>
+    <tr><td>Outbox: each message you send or queue, with its recipients, text, attachments, channel and status</td><td>So nothing is lost if you are offline or the app closes</td><td>Waiting messages until you send or delete them. Once a message is handed to Mail, Messages or WhatsApp it moves to History, and its attachment copies are deleted</td></tr>
+    <tr><td>History (<code>history.json</code>): each message you hand to Mail, Messages or WhatsApp — recipients, subject, text, channel, date, the <em>names</em> of attached files (not the files themselves) and whether you flagged it for follow-up</td><td>So you can look back at what you sent, search it and follow up</td><td>Until you delete it in History (swipe a message to delete it). Without Plus the app shows the last 30 days; older messages are kept, not deleted, and reappear with Plus</td></tr>
+    <tr><td>People, your address book (<code>people.json</code>): names, email addresses, phone numbers, a note, and when you last contacted each person. Built from the people you send to, people you add or edit, and people you import from Contacts or a spreadsheet</td><td>So you can find and write to people quickly</td><td>Until you delete the person. Deleting a person keeps the messages you sent them</td></tr>
     <tr><td>Files shared to HelloGoodbye from other apps</td><td>To attach them to the message you are writing</td><td>Deleted when the share screen closes; any left behind are removed within a day</td></tr>
     <tr><td>Your settings: To/Cc/Bcc, formatted email, default country code</td><td>To send the way you prefer</td><td>Until you change them</td></tr>
   </table></div>
@@ -88,12 +90,29 @@
   <p>You see the message there and confirm it yourself. From that point it is handled by that app and its own privacy policy (for example <a href="https://www.apple.com/legal/privacy/">Apple’s</a> or <a href="https://www.whatsapp.com/legal/privacy-policy">WhatsApp’s</a>). We never receive a copy.</p>
   <p>When a message includes files and goes to WhatsApp through the share sheet, HelloGoodbye also copies its text to the clipboard so you can paste it into the chat.</p>
 
+  <h2 id="icloud">iCloud sync</h2>
+  <p>If you are signed in to iCloud, your address book (People) and History sync automatically across your iPhone, iPad and Mac through your <strong>private</strong> iCloud database, using Apple’s CloudKit (container <code>iCloud.com.fbmore.HelloGoodbye</code>). This data is stored by Apple in your iCloud account under <a href="https://www.apple.com/legal/privacy/">Apple’s privacy policy</a>; we cannot read it. Your templates, canned attachments and Outbox are not synced.</p>
+  <p>Sync is free and on by default. To stop it on a device, turn off “Sync with iCloud” in HelloGoodbye → Settings → iCloud; you can also turn off iCloud for HelloGoodbye in Settings → [your name] → iCloud, or sign out of iCloud. To remove what is already stored there, go to Settings → [your name] → iCloud → Manage Account Storage.</p>
+
+  <h2 id="purchases">Purchases (RevenueCat)</h2>
+  <p>HelloGoodbye Plus is bought through Apple’s App Store. Apple handles payment; we never see your payment details. To tell the app whether Plus is active, purchases are processed by <a href="https://www.revenuecat.com/privacy">RevenueCat</a>, which receives:</p>
+  <ul>
+    <li>an anonymous app user ID, generated at random by RevenueCat’s software on your device, and</li>
+    <li>your App Store purchase receipt and transaction data (which product, when, and whether it is active, in trial or expired).</li>
+  </ul>
+  <p>No name, email address, contacts, address book, history or message content is sent to RevenueCat. This purchase information is not linked to your identity and is not used for tracking or advertising. RevenueCat is the only third-party service HelloGoodbye uses.</p>
+
   <h2>Network use</h2>
-  <p>HelloGoodbye contacts no server of ours, because there isn’t one. The only request the app makes itself is a connectivity check: while it believes you are offline, it asks Apple’s standard <code>captive.apple.com</code> page whether the internet is reachable. That request carries no information about you or your messages.</p>
+  <p>HelloGoodbye has no server of its own. The app makes only these requests itself:</p>
+  <ul>
+    <li>a connectivity check: while it believes you are offline, it asks Apple’s standard <code>captive.apple.com</code> page whether the internet is reachable. That request carries no information about you or your messages;</li>
+    <li>RevenueCat, to check and restore purchases (see <a href="#purchases">Purchases</a>);</li>
+    <li>Apple’s iCloud, if you are signed in to iCloud and sync is on (see <a href="#icloud">iCloud sync</a>).</li>
+  </ul>
 
   <h2>Permissions</h2>
   <ul>
-    <li><strong>Contacts:</strong> HelloGoodbye does not ask for access to your contacts. When you tap the contact button, iOS shows its own picker, and only the email address or phone number you choose is given to the app.</li>
+    <li><strong>Contacts:</strong> HelloGoodbye does not ask for access to your contacts. When you tap the contact button, Import from Contacts in People, or From Contacts in a saved recipient list (iPhone and iPad), iOS shows its own picker, and only the people, email addresses or phone numbers you choose are given to the app. People you pick are saved in your HelloGoodbye address book.</li>
     <li><strong>Notifications</strong> (optional): used to tell you when you are back online with messages waiting, or that a message shared from another app is ready to finish in HelloGoodbye. Notifications are created on your device; you can turn them off in Settings → Notifications → HelloGoodbye.</li>
     <li><strong>Files</strong>: only the files you pick in Settings or share to HelloGoodbye are read.</li>
     <li><strong>Background refresh</strong>: if messages are waiting for a connection, iOS may briefly wake HelloGoodbye once you are online, to show the back-online notification.</li>
@@ -106,19 +125,21 @@
     <li>No analytics, usage statistics or crash reporting of our own</li>
     <li>No advertising and no advertising identifiers</li>
     <li>No tracking across apps or websites</li>
-    <li>No location, no contacts database, no photos library access</li>
-    <li>No third-party software development kits</li>
+    <li>No location, no access to your whole contacts database, no photos library access</li>
+    <li>No third-party software development kits other than RevenueCat’s, for purchases only</li>
+    <li>No copies of your messages, address book or history on any server of ours</li>
   </ul>
   <p>If you choose to share diagnostics with Apple in your device settings, Apple may share crash reports with developers; those are covered by Apple’s privacy policy.</p>
 
   <h2>Contacting us</h2>
   <p>If you email us (for example with “Send Feedback” in the app), we receive your email address and whatever you write, and use them only to reply. We don’t add you to any list.</p>
 
-  <h2>Deleting your data</h2>
-  <p>Remove templates, lists, attachments and Outbox messages inside the app, or delete HelloGoodbye to remove everything it stored. Messages you already sent live in Mail, Messages or WhatsApp and are deleted there.</p>
+  <h2>Exporting and deleting your data</h2>
+  <p>With HelloGoodbye Plus you can export your address book as a spreadsheet (History → People → + → Export Spreadsheet…). The CSV file is created on your device and saved wherever you choose; nothing is sent to us. Importing a spreadsheet works the same way in reverse: the file you pick is read on your device.</p>
+  <p>Remove templates, lists, attachments and Outbox messages inside the app. In History, swipe a message to delete it; in People, swipe a person to delete them (their messages stay in History until you delete those too). Deleting HelloGoodbye removes everything it stored on that device. If you have used iCloud sync, delete the HelloGoodbye data in Settings → [your name] → iCloud → Manage Account Storage. Messages you already sent live in Mail, Messages or WhatsApp and are deleted there. Purchase records are kept by Apple and RevenueCat under their own policies; if you have a request about them, write to us.</p>
 
   <h2>Children</h2>
-  <p>HelloGoodbye is not directed at children under 13 and collects no information from anyone, including children.</p>
+  <p>HelloGoodbye is not directed at children under 13. We collect no personal information from anyone, including children; the only data processed outside your devices is the anonymous purchase information described above.</p>
 
   <h2>Changes</h2>
   <p>If this policy changes, we’ll update this page and the date at the top. Material changes will also be noted in the app’s release notes.</p>
