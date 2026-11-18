@@ -69,6 +69,7 @@
   <div class="table-wrap"><table>
     <tr><th>What</th><th>Why</th><th>How long</th></tr>
     <tr><td>Your templates: the subject, hello, message, goodbye and signature options you write, and which one is selected</td><td>To compose your messages</td><td>Until you change them or delete the app</td></tr>
+    <tr><td>Sample data for demo mode (a fictional photographer’s templates, people and messages), only if you turn demo mode on</td><td>So you can try every feature without using your own data</td><td>Kept in a separate folder on the device, outside the shared folder; never synced to iCloud</td></tr>
     <tr><td>Saved recipient lists: names, email addresses and phone numbers you type, choose from your HelloGoodbye People, or pick from Contacts</td><td>So you can write to a group in one tap</td><td>Until you remove them</td></tr>
     <tr><td>Canned attachments: copies of files you add in Settings</td><td>To attach them to new messages</td><td>Until you remove them</td></tr>
     <tr><td>Outbox: each message you send or queue, with its recipients, text, attachments, channel and status</td><td>So nothing is lost if you are offline or the app closes</td><td>Waiting messages until you send or delete them. Once a message is handed to Mail, Messages or WhatsApp it moves to History, and its attachment copies are deleted</td></tr>
@@ -88,7 +89,7 @@
     <li>or the app you pick from the share sheet.</li>
   </ul>
   <p>You see the message there and confirm it yourself. From that point it is handled by that app and its own privacy policy (for example <a href="https://www.apple.com/legal/privacy/">Apple’s</a> or <a href="https://www.whatsapp.com/legal/privacy-policy">WhatsApp’s</a>). We never receive a copy.</p>
-  <p>When a message includes files and goes to WhatsApp through the share sheet, HelloGoodbye also copies its text to the clipboard so you can paste it into the chat.</p>
+  <p>When a WhatsApp message includes photos or videos, HelloGoodbye copies them to the clipboard and opens the chat with that number and your message, so you can paste them in (other files, like PDFs, go through the share sheet instead and are not copied). On iPhone and iPad the copied files stay on that device only (not Universal Clipboard) and are cleared after 10 minutes; on the Mac they go on the normal clipboard until you copy something else.</p>
 
   <h2 id="icloud">iCloud sync</h2>
   <p>If you are signed in to iCloud, your address book (People) and History sync automatically across your iPhone, iPad and Mac through your <strong>private</strong> iCloud database, using Apple’s CloudKit (container <code>iCloud.com.fbmore.HelloGoodbye</code>). This data is stored by Apple in your iCloud account under <a href="https://www.apple.com/legal/privacy/">Apple’s privacy policy</a>; we cannot read it. Your templates, canned attachments and Outbox are not synced.</p>
