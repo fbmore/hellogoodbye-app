@@ -73,13 +73,14 @@
   .dot[aria-current="true"]::after { width:22px; margin-left:-11px; background:var(--accent); }
 
   /* Screens */
-  /* See it in action: 3D close-up loop + feature tour */
+  /* See it in action: feature tour + share story */
   .watch { margin:64px 0 8px; text-align:center; }
   .watch p.lede { color:var(--muted); margin:-8px auto 24px; max-width:520px; text-wrap:pretty; }
   .tourvid { display:block; width:100%; aspect-ratio:16/9; border-radius:20px; background:var(--surface);
     box-shadow:0 0 0 1px oklch(0 0 0 / .06), 0 12px 32px rgba(17,20,24,.08); }
   .tourvid.vertical { display:none; width:min(100%, 360px); aspect-ratio:9/16; margin:0 auto; }
   @media (max-width: 600px) and (orientation: portrait) { .tourvid.wide { display:none; } .tourvid.vertical { display:block; } }
+  .watch p.lede.story { margin:40px auto 24px; }
   .watch figcaption { font-size:14px; color:var(--muted); margin-top:10px; text-wrap:pretty; }
   @media (prefers-color-scheme: dark) { .tourvid { box-shadow:0 0 0 1px oklch(1 0 0 / .1), 0 12px 32px rgba(0,0,0,.4); } }
   .peek { margin:64px 0 8px; text-align:center; }
@@ -147,6 +148,26 @@
   "uploadDate": "2026-11-18",
   "duration": "PT46S",
   "contentUrl": "https://fbmore.github.io/hellogoodbye-app/media/hellogoodbye-pitch-vertical.mp4"
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "HelloGoodbye: from canvas to inbox",
+  "description": "A silent 30-second story: new artwork is shared from Photos to HelloGoodbye, the saved template fills the message with the file attached, an email address is typed, and it is sent now or kept in the Outbox for later.",
+  "thumbnailUrl": "https://fbmore.github.io/hellogoodbye-app/media/share-poster.jpg",
+  "uploadDate": "2026-11-18",
+  "duration": "PT30S",
+  "contentUrl": "https://fbmore.github.io/hellogoodbye-app/media/hellogoodbye-share-story.mp4"
+ },
+ {
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "HelloGoodbye: from canvas to inbox, in portrait",
+  "description": "The same share story in a 9:16 cut for phones.",
+  "thumbnailUrl": "https://fbmore.github.io/hellogoodbye-app/media/share-vertical-poster.jpg",
+  "uploadDate": "2026-11-18",
+  "duration": "PT30S",
+  "contentUrl": "https://fbmore.github.io/hellogoodbye-app/media/hellogoodbye-share-story-vertical.mp4"
  }
 ]
 </script>
@@ -186,7 +207,17 @@
              aria-label="A silent 46-second tour of HelloGoodbye, in portrait: swiping the hello, message and goodbye; emailing a whole group by Bcc with a price list attached; the same words by text or WhatsApp; History with follow-up flags; ending on “Write it once. Send it in seconds.”">
         <source src="media/hellogoodbye-pitch-vertical.mp4" type="video/mp4">
       </video>
-      <figcaption>The whole tour in 46 seconds, no sound needed.</figcaption>
+    </figure>
+    <p class="lede story">Or share straight from any app: an illustrator sends new artwork, the template fills in, type the address and send now or later.</p>
+    <figure style="margin:0">
+      <video class="tourvid wide" controls playsinline preload="none" poster="media/share-poster.jpg"
+             aria-label="A silent 30-second story: artwork finished on an iPad is shared from Photos to HelloGoodbye; the saved template fills the message with the file attached; an email address is typed; the message waits in the Outbox to send now or later; ending on “From canvas to inbox, in seconds.”">
+        <source src="media/hellogoodbye-share-story.mp4" type="video/mp4">
+      </video>
+      <video class="tourvid vertical" controls playsinline preload="none" poster="media/share-vertical-poster.jpg"
+             aria-label="A silent 30-second story, in portrait: artwork finished on an iPad is shared from Photos to HelloGoodbye; the saved template fills the message with the file attached; an email address is typed; the message waits in the Outbox to send now or later; ending on “From canvas to inbox, in seconds.”">
+        <source src="media/hellogoodbye-share-story-vertical.mp4" type="video/mp4">
+      </video>
     </figure>
   </section>
 
