@@ -32,7 +32,7 @@
   @media (max-width:420px){ nav .links a { margin-left:12px; } }
 
   .hero { text-align:center; padding:48px 0 8px; }
-  .kicker { font-size:15px; font-weight:600; color:var(--accent); margin:0; }
+  .kicker { font-size:15px; font-weight:600; color:var(--accent); margin:0; text-wrap:balance; }
   h1 { font-size:clamp(34px, 7.5vw, 52px); font-weight:700; letter-spacing:-.025em; margin:10px 0 14px; line-height:1.08; }
   h1 .hello { color:var(--hello); } h1 .goodbye { color:var(--goodbye); }
   .lead { font-size:19px; color:var(--muted); max-width:560px; margin:0 auto; }
@@ -72,7 +72,6 @@
   .dot[aria-current="true"] { width:36px; }
   .dot[aria-current="true"]::after { width:22px; margin-left:-11px; background:var(--accent); }
 
-  /* Screens */
   /* See it in action: feature tour + share story */
   .watch { margin:64px 0 8px; text-align:center; }
   .watch p.lede { color:var(--muted); margin:-8px auto 24px; max-width:520px; text-wrap:pretty; }
@@ -81,10 +80,8 @@
   .tourvid.vertical { display:none; width:min(100%, 360px); aspect-ratio:9/16; margin:0 auto; }
   @media (max-width: 600px) and (orientation: portrait) { .tourvid.wide { display:none; } .tourvid.vertical { display:block; } }
   .watch p.lede.story { margin:40px auto 24px; }
-  .watch figcaption { font-size:14px; color:var(--muted); margin-top:10px; text-wrap:pretty; }
-  @media (prefers-color-scheme: dark) { .tourvid { box-shadow:0 0 0 1px oklch(1 0 0 / .1), 0 12px 32px rgba(0,0,0,.4); } }
   .peek { margin:64px 0 8px; text-align:center; }
-  .peek h2, .section-title { font-size:28px; font-weight:700; letter-spacing:-.02em; margin:0 0 20px; }
+  .peek h2, .section-title { font-size:28px; font-weight:700; letter-spacing:-.02em; line-height:1.15; margin:0 0 20px; }
   .peek-row { display:flex; gap:16px; overflow-x:auto; padding:4px 4px 16px; scroll-snap-type:x mandatory; scrollbar-width:none; }
   .peek-row::-webkit-scrollbar { display:none; }
   .peek figure { flex:0 0 auto; width:210px; margin:0; scroll-snap-align:center; }
@@ -96,7 +93,7 @@
   .features { display:grid; grid-template-columns:1fr; gap:12px; margin:56px 0; }
   @media (min-width:620px){ .features { grid-template-columns:1fr 1fr; } }
   .card { background:var(--surface); border-radius:20px; padding:22px 24px; }
-  .card h3 { margin:0 0 6px; font-size:17px; font-weight:600; }
+  .card h3 { margin:0 0 6px; font-size:17px; font-weight:600; line-height:1.3; }
   .card p { margin:0; font-size:15px; color:var(--muted); }
   .card .tag { display:inline-block; width:8px; height:8px; border-radius:99px; margin-right:8px; vertical-align:2px; }
 
@@ -105,7 +102,7 @@
   .plans { display:grid; grid-template-columns:1fr; gap:12px; text-align:left; }
   @media (min-width:620px){ .plans { grid-template-columns:1fr 1fr; } }
   .plan { background:var(--surface); border-radius:20px; padding:24px; display:flex; flex-direction:column; }
-  .plan h3 { margin:0 0 6px; font-size:19px; font-weight:700; letter-spacing:-.01em; text-wrap:balance; }
+  .plan h3 { margin:0 0 6px; font-size:19px; font-weight:700; letter-spacing:-.01em; line-height:1.2; text-wrap:balance; }
   .plan-lede { margin:0 0 14px; font-size:15px; color:var(--muted); }
   .plan ul { margin:0; padding:0; list-style:none; font-size:15px; }
   .plan li { padding:6px 0 6px 18px; position:relative; text-wrap:pretty; }
@@ -117,10 +114,10 @@
   .rates dt { font-size:15px; color:var(--ink); }
   .rates dd { margin:0; font-size:20px; font-weight:600; letter-spacing:-.01em; font-variant-numeric:tabular-nums; }
   .rates dd span { font-size:13px; font-weight:400; color:var(--muted); }
-  .fine { margin:12px 0 0; font-size:12px; color:var(--muted); }
+  .fine { margin:12px 0 0; font-size:13px; color:var(--muted); text-wrap:pretty; }
   hr { border:none; border-top:1px solid var(--line); margin:48px 0; }
   footer { text-align:center; font-size:13px; color:var(--muted); }
-  footer a { color:var(--muted); }
+  footer a { color:var(--muted); display:inline-block; padding:10px 0; }
 
   @media (prefers-reduced-motion: reduce) {
     .slide, .dot::after, .cta { transition:none; }
@@ -185,7 +182,7 @@
 
   <header class="hero">
     <p class="kicker">The messages you write again and again, in seconds</p>
-    <h1><span class="hello">Hello,</span> the same email — <span class="goodbye">faster.</span></h1>
+    <h1><span class="hello">Hello,</span> the same email&nbsp;— <span class="goodbye">faster.</span></h1>
     <p class="lead">Keep a few versions of every part of a message. Swipe to pick a hello, a message, a goodbye and a signature, type who it’s for, and send it by email, text or WhatsApp.</p>
   </header>
 
@@ -197,7 +194,7 @@
 
   <section class="watch" aria-labelledby="watch-title">
     <h2 class="section-title" id="watch-title">See it in action</h2>
-    <p class="lede">A photographer replies to a wedding enquiry: swipe the hello, the message and the goodbye, then send.</p>
+    <p class="lede">A photographer replies to a wedding enquiry: swipe the hello, the message and the&nbsp;goodbye, then&nbsp;send.</p>
     <figure style="margin:0">
       <video class="tourvid wide" controls playsinline preload="none" poster="media/pitch-poster.jpg"
              aria-label="A silent 46-second tour of HelloGoodbye: swiping the hello, message and goodbye; emailing a whole group by Bcc with a price list attached; the same words by text or WhatsApp; History with follow-up flags; ending on “Write it once. Send it in seconds.”">
@@ -208,7 +205,7 @@
         <source src="media/hellogoodbye-pitch-vertical.mp4" type="video/mp4">
       </video>
     </figure>
-    <p class="lede story">Or share straight from any app: an illustrator sends new artwork, the template fills in, type the address and send now or later.</p>
+    <p class="lede story">Or share straight from any app: an illustrator sends new artwork, the template fills in, type the address and send now&nbsp;or&nbsp;later.</p>
     <figure style="margin:0">
       <video class="tourvid wide" controls playsinline preload="none" poster="media/share-poster.jpg"
              aria-label="A silent 30-second story: artwork finished on an iPad is shared from Photos to HelloGoodbye; the saved template fills the message with the file attached; an email address is typed; the message waits in the Outbox to send now or later; ending on “From canvas to inbox, in seconds.”">
@@ -326,7 +323,7 @@
   </section>
 
   <section class="price" aria-labelledby="price-title">
-    <h2 class="section-title" id="price-title">Free to use. Plus if you want more.</h2>
+    <h2 class="section-title" id="price-title">Free&nbsp;to&nbsp;use. Plus&nbsp;if&nbsp;you&nbsp;want&nbsp;more.</h2>
     <div class="plans">
       <div class="plan">
         <h3>Free</h3>
@@ -334,8 +331,8 @@
         <ul>
           <li>Up to 5 versions of each part</li>
           <li>Email, text and WhatsApp</li>
-          <li>Share from any app, Outbox and offline queue</li>
-          <li>People, saved lists and one canned attachment</li>
+          <li>Share from any app, Outbox and&nbsp;offline&nbsp;queue</li>
+          <li>People, saved lists and one canned&nbsp;attachment</li>
           <li>History of the last 30 days</li>
           <li>iCloud sync on iPhone, iPad and Mac</li>
         </ul>
@@ -348,14 +345,14 @@
           <li>Unlimited canned attachments</li>
           <li>Your full History, not just 30 days</li>
           <li>Follow-up flags on sent messages</li>
-          <li>Import and export People as a spreadsheet</li>
+          <li>Import and export People as&nbsp;a&nbsp;spreadsheet</li>
         </ul>
         <dl class="rates">
           <div><dt>Monthly</dt><dd>$1.99<span>/month</span></dd></div>
           <div><dt>Yearly</dt><dd>$14.99<span>/year</span></dd></div>
           <div><dt>Lifetime</dt><dd>$34.99<span> once</span></dd></div>
         </dl>
-        <p class="fine">Yearly starts with a 1-week free trial for eligible new subscribers. Subscriptions renew automatically until cancelled. US prices; the app shows yours in your currency.</p>
+        <p class="fine">Yearly starts with a 1-week free trial for eligible new subscribers. Subscriptions renew automatically until cancelled. US prices; the app shows yours in&nbsp;your&nbsp;currency.</p>
       </div>
     </div>
     <p class="tag">No ads. One download for iPhone, iPad and Mac.</p>
@@ -408,9 +405,6 @@
     if (reduce) return;
     clearInterval(timer); timer = setInterval(() => go(i + 1), 9000);
   }, {passive:true}));
-</script>
-<script>
-  // Respect Reduce Motion: keep the 3D loop on its poster.
 </script>
 </body>
 </html>
