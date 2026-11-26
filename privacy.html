@@ -64,11 +64,11 @@
 
   <p class="kicker">HelloGoodbye</p>
   <h1>Privacy Policy</h1>
-  <p class="muted">Last updated: 25 November 2026 · applies to HelloGoodbye 2.0 and later for iPhone, iPad and Mac</p>
+  <p class="muted">Last updated: 26 November 2026 · applies to HelloGoodbye 2.0 and later for iPhone, iPad and Mac</p>
 
   <p class="lead">HelloGoodbye helps you write messages faster. Your templates, address book, history and Outbox stay on your device (and, if you are signed in to iCloud, your address book and history also sync through your own private iCloud; templates and the Outbox never do). Messages leave your device only when you send them through Mail, Messages, WhatsApp or another app you choose.</p>
 
-  <p><span class="pill">In short</span> &nbsp;No account. No tracking. No analytics. No ads. We run no servers of our own and never receive your messages, your contacts, your address book or anything else you write in the app. The one outside service is RevenueCat, which handles in-app purchases and sees only an anonymous ID and your App Store purchase records&nbsp;— never your name, email, contacts or&nbsp;messages.</p>
+  <p><span class="pill">In short</span> &nbsp;No account. No tracking. No analytics. No ads. We never receive your messages, your contacts, your address book or anything else you write in the app. The one exception is pictures you choose to put in an email (version 2.1 and later): so every mail app can show them, they are put online (see <a href="#pictures">Pictures in emails</a>). The one outside service is RevenueCat, which handles in-app purchases and sees only an anonymous ID and your App Store purchase records&nbsp;— never your name, email, contacts or&nbsp;messages.</p>
 
   <hr>
 
@@ -106,6 +106,17 @@
   <p>If you are signed in to iCloud, your address book (People) and History sync automatically across your iPhone, iPad and Mac through your <strong>private</strong> iCloud database, using Apple’s CloudKit (container <code>iCloud.com.fbmore.HelloGoodbye</code>). This data is stored by Apple in your iCloud account under <a href="https://www.apple.com/legal/privacy/">Apple’s privacy policy</a>; we cannot read it. Templates and the Outbox stay on each device and are not synced, so a message is never sent twice.</p>
   <p>Sync is free and on by default. To stop it on a device, turn off “Sync with iCloud” in HelloGoodbye → Settings → iCloud; you can also turn off iCloud for HelloGoodbye in Settings → [your name] → iCloud, or sign out of iCloud. To remove what is already stored there, go to Settings → [your name] → iCloud → Manage Account Storage.</p>
 
+  <h2 id="pictures">Pictures in emails</h2>
+  <p>Starting with HelloGoodbye 2.1, you can put pictures (a logo, a graphic) in an email’s message or signature. Mail apps such as Gmail don’t show pictures embedded inside an email sent from an iPhone or iPad, so when you send an email with pictures from an iPhone or iPad, HelloGoodbye puts <strong>only those pictures</strong>, at the size used in that email, online:</p>
+  <ul>
+    <li>Each picture is saved to the <strong>public</strong> database of HelloGoodbye’s iCloud container (Apple’s CloudKit, <code>iCloud.com.fbmore.HelloGoodbye</code>), under a name made from a fingerprint of the picture, and the email links to it at <code>https://img.hellogoodbyeapp.com/&lt;name&gt;</code>. That address is served by Cloudflare, which caches the picture.</li>
+    <li>Anyone with the link can see the picture, as with any picture in an email. The link is not listed or searchable anywhere, and it carries nothing about you, the email or its recipients.</li>
+    <li>The email’s text, subject, recipients and attachments are never uploaded. Nothing is uploaded for emails without pictures, for Text or WhatsApp messages, or on the Mac, where Mail sends the pictures inside the email.</li>
+    <li>A picture’s link never changes what it shows, so editing a template later can’t change an email you already sent. Pictures are kept at least 90 days after the last email that used them and may then be deleted, after which older emails show an empty space.</li>
+    <li>We don’t log who views the pictures and don’t use them to tell whether an email was opened. Cloudflare and Apple process the requests under their own policies (<a href="https://www.cloudflare.com/privacypolicy/">Cloudflare</a>, <a href="https://www.apple.com/legal/privacy/">Apple</a>).</li>
+  </ul>
+  <p>This needs you to be signed in to iCloud. Your Apple Account is used only so that pictures you upload can be managed (and deleted) by you; we can’t see who you are.</p>
+
   <h2 id="purchases">Purchases (RevenueCat)</h2>
   <p>HelloGoodbye Plus is bought through Apple’s App Store. Apple handles payment; we never see your payment details. To tell the app whether Plus is active, purchases are processed by <a href="https://www.revenuecat.com/privacy">RevenueCat</a>, which receives:</p>
   <ul>
@@ -115,11 +126,12 @@
   <p>No name, email address, contacts, address book, history or message content is sent to RevenueCat. This purchase information is not linked to your identity and is not used for tracking or advertising. RevenueCat is the only third-party service HelloGoodbye uses.</p>
 
   <h2>Network use</h2>
-  <p>HelloGoodbye has no server of its own. The app makes only these requests itself:</p>
+  <p>HelloGoodbye has no server of its own except the picture address described above. The app makes only these requests itself:</p>
   <ul>
     <li>a connectivity check: while it believes you are offline, it asks Apple’s standard <code>captive.apple.com</code> page whether the internet is reachable. That request carries no information about you or your messages;</li>
     <li>RevenueCat, to check and restore purchases (see <a href="#purchases">Purchases</a>);</li>
-    <li>Apple’s iCloud, if you are signed in to iCloud and sync is on (see <a href="#icloud">iCloud sync</a>).</li>
+    <li>Apple’s iCloud, if you are signed in to iCloud and sync is on (see <a href="#icloud">iCloud sync</a>);</li>
+    <li>Apple’s iCloud public database, to upload the pictures of an email you send from an iPhone or iPad (see <a href="#pictures">Pictures in emails</a>).</li>
   </ul>
 
   <h2>Permissions</h2>
@@ -139,7 +151,7 @@
     <li>No tracking across apps or websites</li>
     <li>No location, no access to your whole contacts database, no photos library access</li>
     <li>No third-party software development kits other than RevenueCat’s, for purchases only</li>
-    <li>No copies of your messages, address book or history on any server of ours</li>
+    <li>No copies of your messages, address book or history on any server of ours (only the pictures you put in emails, as described above)</li>
   </ul>
   <p>If you choose to share diagnostics with Apple in your device settings, Apple may share crash reports with developers; those are covered by Apple’s privacy policy.</p>
 
