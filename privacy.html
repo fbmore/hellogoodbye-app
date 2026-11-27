@@ -131,7 +131,8 @@
     <li>a connectivity check: while it believes you are offline, it asks Apple’s standard <code>captive.apple.com</code> page whether the internet is reachable. That request carries no information about you or your messages;</li>
     <li>RevenueCat, to check and restore purchases (see <a href="#purchases">Purchases</a>);</li>
     <li>Apple’s iCloud, if you are signed in to iCloud and sync is on (see <a href="#icloud">iCloud sync</a>);</li>
-    <li>Apple’s iCloud public database, to upload the pictures of an email you send from an iPhone or iPad (see <a href="#pictures">Pictures in emails</a>).</li>
+    <li>Apple’s iCloud public database, to upload the pictures of an email you send from an iPhone or iPad (see <a href="#pictures">Pictures in emails</a>);</li>
+    <li>a website you type in Settings → Email Colors, only when you ask the app to pick colors from it. The app downloads that page (and its style sheets, manifest and icon) directly from the site, like a browser would, without cookies, and keeps only the colors you choose. Nothing about you or your messages is sent, and nothing goes through a server of ours.</li>
   </ul>
 
   <h2>Permissions</h2>
